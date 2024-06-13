@@ -38,10 +38,40 @@
 
         <input type="submit" value="Submit">
        
+        
+    </form>
+    <script>
+        function validateForm() {
+            var firstName = document.forms["feedbackForm"]["firstName"].value;
+            var lastName = document.forms["feedbackForm"]["lastName"].value;
+            var phoneNumber = document.forms["feedbackForm"]["phoneNumber"].value;
+            var email = document.forms["feedbackForm"]["email"].value;
+            var message = document.forms["feedbackForm"]["message"].value;
+    
+            // Validate name: no numbers or special characters
+            if (/[^a-zA-Z -]/.test(firstName) || /[^a-zA-Z -]/.test(lastName)) {
+                alert("Name should not contain numbers or special characters.");
+                return false;
+            }
+    
+            // Validate email format
+            if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+                alert("You have entered an invalid email address!");
+                return false;
+            }
+    
+            // Validate phone number: exactly 10 digits
+            if (phoneNumber.length != 10 || /[^0-9]/.test(phoneNumber)) {
+                alert("Phone number must be 10 digits.");
+                return false;
+            }
+    
+    
             alert("Message has been sent successfully!");
             window.location.href = 'index.html'; 
-            return false; 
-    </form>
+            return false;
+        }
+    </script>
 
     
 </div>
